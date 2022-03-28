@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
       apiKey: apiKey,
 
       containerId: null,
-      redirectOnLeave: 'http://localhost/eapp/home',
+      redirectOnLeave: 'https://abhishekrntriapthi.github.io/video-meeting/home',
 
       micEnabled: true,
       webcamEnabled: true,

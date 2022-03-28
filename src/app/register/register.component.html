@@ -1,0 +1,130 @@
+<div class="col-md-12">
+  <div class="card card-container">
+    <img
+      id="profile-img"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="profile-img-card"
+    />
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="FirstName">FirstName</label>
+        <input
+          type="text"
+          class="form-control"
+          name="FirstName"
+          [(ngModel)]="form.firstName"
+          required
+          minlength="3"
+          maxlength="20"
+          #firstName="ngModel"
+        />
+        <div class="alert-danger" *ngIf="firstName.errors && f.submitted">
+          <div *ngIf="firstName.errors['required']">FirstName is required</div>
+          <div *ngIf="firstName.errors['minlength']">
+            FirstName must be at least 3 characters
+          </div>
+          <div *ngIf="firstName.errors['maxlength']">
+            FirstName must be at most 20 characters
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="FirstName">LastName</label>
+        <input
+          type="text"
+          class="form-control"
+          name="FirstName"
+          [(ngModel)]="form.lastName"
+          required
+          minlength="3"
+          maxlength="20"
+          #lastName="ngModel"
+        />
+        <div class="alert-danger" *ngIf="lastName.errors && f.submitted">
+          <div *ngIf="lastName.errors['required']">LastName is required</div>
+          <div *ngIf="lastName.errors['minlength']">
+            LastName must be at least 3 characters
+          </div>
+          <div *ngIf="lastName.errors['maxlength']">
+            FirstName must be at most 20 characters
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="form.email"
+          required
+          email
+          #email="ngModel"
+        />
+        <div class="alert-danger" *ngIf="email.errors && f.submitted">
+          <div *ngIf="email.errors['required']">Email is required</div>
+          <div *ngIf="email.errors['email']">
+            Email must be a valid email address
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="FirstName">Mobile Number</label>
+        <input
+          type="text"
+          class="form-control"
+          name="FirstName"
+          [(ngModel)]="form.mobileNo"
+          required
+          maxlength="10"
+          #mobileNo="ngModel"
+        />
+        <div class="alert-danger" *ngIf="mobileNo.errors && f.submitted">
+          <div *ngIf="mobileNo.errors['required']">Mobile Number is required</div>
+          <div *ngIf="mobileNo.errors['maxlength']">
+            FirstName must be at most 10 Digit
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+        />
+        <div class="alert-danger" *ngIf="password.errors && f.submitted">
+          <div *ngIf="password.errors['required']">Password is required</div>
+          <div *ngIf="password.errors['minlength']">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Sign Up</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Your registration is successful!
+    </div>
+  </div>
+</div>
